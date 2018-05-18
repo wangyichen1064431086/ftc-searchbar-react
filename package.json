@@ -1,6 +1,6 @@
 {
   "name": "@ftchinese/ftc-searchbar-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The search bar for FTC, which is a  partial of ftc-header. It is the react version.",
   "main": "build/index.js",
   "module": "build/index.es.js",
