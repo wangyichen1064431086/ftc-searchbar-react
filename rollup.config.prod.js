@@ -5,10 +5,10 @@ import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 
 export default {
-  input: './src/js/PushdownMenu.js',
+  input: './src/js/SearchBar.js',
   output:[
     {
-      name:'PushdownMenu',
+      name:'SearchBar',
       sourcemap: true,
       
       globals:{
@@ -21,7 +21,7 @@ export default {
       
     },
     {
-      name:'PushdownMenu',
+      name:'SearchBar',
       sourcemap: true,
       
       globals:{

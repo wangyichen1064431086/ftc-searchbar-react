@@ -1,4 +1,4 @@
-jest.unmock('../src/js/PushdownMenu');//指示模块系统不应从require（）返回指定模块的模拟版本（例如，它应始终返回实模块）。
+jest.unmock('../src/js/SearchBar');//指示模块系统不应从require（）返回指定模块的模拟版本（例如，它应始终返回实模块）。
 
 
 //jest会自动mock模拟依赖包，所以真实的要测试的文件要unmock
@@ -7,50 +7,47 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 
-import {PushdownMenu, PushdownItem} from '../src/js/PushdownMenu.js';
+import SearchBar from '../src/js/SearchBar.js';
 
-describe('Build a Pushdown Menu with first child explicitly selected', () => {
+describe('Build a Searchbar', () => {
   it('render', () => {
-    const pushdownMenu = ReactTestUtils.renderIntoDocument(
-      <PushdownMenu>
-        <PushdownItem name={"简体中文"} url={"#"} selected={true} />
-        <PushdownItem name={"繁体中文"} url={"http://big5.ftchinese.com/"} />
-        <PushdownItem name={"英文"} url={"https://www.ft.com/"} />
-      </PushdownMenu>
+    const searchBar = ReactTestUtils.renderIntoDocument(
+      <SearchBar postUrl="#" />
     );
-    const pushdownMenuNode = ReactDOM.findDOMNode(pushdownMenu);
+    const searchBarNode = ReactDOM.findDOMNode(searchBar);
 
-    expect(pushdownMenuNode).toBeInstanceOf(HTMLElement);
-    expect(pushdownMenuNode.querySelector('ul').className.includes('menu-list')).toBeTruthy;
-    expect(pushdownMenuNode.querySelectorAll('ul li').length).toBe(3);
-    expect(pushdownMenuNode.querySelector('ul li').className.includes('menu-item'));
+    expect(searchBarNode).toBeInstanceOf(HTMLElement);
+    expect(searchBarNode.className.includes('initial-container')).toBeTruthy;
+    expect(searchBarNode.querySelector('form').className.includes('form')).toBeTruthy;
+    expect(searchBarNode.querySelector('button').className.includes('switch-btn')).toBeTruthy;
+    expect(searchBarNode.querySelector('form button').className.includes('search-btn')).toBeTruthy;
+    expect(searchBarNode.querySelector('form p').className.includes('input-area')).toBeTruthy;
+    expect(searchBarNode.querySelector('form input')).toBeInstanceOf(HTMLElement);
   });
 
   it('Toggle', () => {
-    const pushdownMenu = ReactTestUtils.renderIntoDocument(
-      <PushdownMenu>
-        <PushdownItem name={"简体中文"} url={"#"} selected={true} />
-        <PushdownItem name={"繁体中文"} url={"http://big5.ftchinese.com/"} />
-        <PushdownItem name={"英文"} url={"https://www.ft.com/"} />
-      </PushdownMenu>
+    const searchBar = ReactTestUtils.renderIntoDocument(
+      <SearchBar postUrl="#" />
     );
-    const pushdownMenuNode = ReactDOM.findDOMNode(pushdownMenu);
-    const firstItem = pushdownMenuNode.querySelector('ul li');
-    expect(firstItem.className.includes('hide')).toBeFalsy;
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(2)').className.includes('hide')).toBeTruthy;
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(3)').className.includes('hide')).toBeTruthy;
+    const searchBarNode = ReactDOM.findDOMNode(searchBar);
+    const switchBtnNode = searchBarNode.querySelector('button');
+    const searchFormNode = searchBarNode.querySelector('form');
 
-    ReactTestUtils.Simulate.click(firstItem);
+    let formCssStyle = window.getComputedStyle ? getComputedStyle(searchFormNode) : searchFormNode.currentStyle;
+     // getComputedStyle for modern browsers, currentStyle for IE8-
 
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(2)').className.includes('hide')).toBeFalsy;
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(3)').className.includes('hide')).toBeFalsy;
+    expect(searchBarNode.className.includes('initial-container')).toBeTruthy;
+    //expect(formCssStyle.display).toBe('none'); //这里计算有问题
 
-    ReactTestUtils.Simulate.click(firstItem);
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(2)').className.includes('hide')).toBeTruthy;
-    expect(pushdownMenuNode.querySelector('ul li:nth-child(3)').className.includes('hide')).toBeTruthy;
+    ReactTestUtils.Simulate.click(switchBtnNode);
 
+    expect(searchBarNode.className.includes('initial-container')).toBeFalsy;
+    formCssStyle = window.getComputedStyle ? getComputedStyle(searchFormNode) : searchFormNode.currentStyle;
+    expect(formCssStyle.display).toBe('block');
+
+    ReactTestUtils.Simulate.click(switchBtnNode);
+    expect(searchBarNode.className.includes('initial-container')).toBeTruthy;
+    formCssStyle = window.getComputedStyle ? getComputedStyle(searchFormNode) : searchFormNode.currentStyle;
+    //expect(formCssStyle.display).toBe('none');
   });
-
 });
-
-//TODO: Build a Pushdown Menu with no child explicitly selected.效果应该同上。
