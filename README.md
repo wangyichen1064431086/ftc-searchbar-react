@@ -14,6 +14,10 @@ npm install "@ftchinese/ftc-searchbar-react" --save
 Example:
 
 ```
+import SearchBar from '@ftchinese/ftc-searchbar-react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 ReactDOM.render(
   <SearchBar postUrl="\search" placeholderText = "输入年月日‘xxxx-xx-xx’可搜索该日存档" />,
   document.getElementById('root')
