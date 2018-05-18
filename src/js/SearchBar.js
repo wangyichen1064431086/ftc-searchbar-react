@@ -43,13 +43,17 @@ class SearchBar extends React.Component {
   }
   renderSwitchBtn() {
     return (
-      <button styleName="switch-btn" onClick={this.clickSwitchBtn}>
+      <button styleName="switch-btn" onClick={this.clickSearchSwitch}>
       </button>
     );
   }
   render() {
+    const containerClass = classnames({
+      "container": true,
+      "initial-container": !this.state.stretch
+    })
     return (
-      <div styleName = "container">
+      <div styleName = {containerClass}>
         { this.renderForm() }
         { this.renderSwitchBtn() }
       </div>
