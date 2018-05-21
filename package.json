@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangyichen1064431086/ftc-pushdownmenu-react.git"
+    "url": "git+https://github.com/wangyichen1064431086/ftc-searchbar-react.git"
   },
   "files": [
     "build"
@@ -27,11 +27,10 @@
   "author": "wangyichen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wangyichen1064431086/ftc-pushdownmenu-react/issues"
+    "url": "https://github.com/wangyichen1064431086/ftc-searchbar-react/issues"
   },
-  "homepage": "https://github.com/wangyichen1064431086/ftc-pushdownmenu-react#readme",
+  "homepage": "https://github.com/wangyichen1064431086/ftc-searchbar-react#readme",
   "dependencies": {
-    "@ftchinese/ftc-nav-react": "^1.0.2",
     "classnames": "^2.2.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "immutable": "^3.8.2",
