@@ -54,8 +54,10 @@ class SearchBar extends React.Component {
     })
     return (
       <div styleName = {containerClass}>
+        <div styleName = "content">
         { this.renderForm() }
         { this.renderSwitchBtn() }
+        </div>
       </div>
     );
   }
