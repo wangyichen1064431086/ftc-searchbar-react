@@ -3,8 +3,6 @@
 $bgColor:#333;
 $textColor: #fff;
 
-
-
 .container {
   font-family: Helvetica Neue,Verdana,Arial,Hiragino Sans GB,WenQuanYi Micro Hei,Heiti SC,STHeiti,Microsoft Yahei,SimSun,sans-serif;
   font-size: 16px;
@@ -123,5 +121,12 @@ $textColor: #fff;
   }
   .switch-btn {
     background-image: url(http://static.ftchinese.com/ftc-icons/svg/white/search-white.svg);
+  }
+}
+
+.sticky {
+  @include oGridRespondTo(L) {
+    position: fixed;
+    top: 0;
   }
 }
