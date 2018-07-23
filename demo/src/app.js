@@ -1,5 +1,5 @@
-import SearchBar from '../../src/js/SearchBar.js';
-//import SearchBar from '../../build/index.es';
+//import SearchBar from '../../src/js/SearchBar.js';
+import SearchBar from '../../build/index.es';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
